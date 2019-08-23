@@ -1,0 +1,51 @@
+{
+  "name": "promiseo",
+  "version": "0.0.1",
+  "description": "Library for resolve object of promises",
+  "main": "dist/promiseo.min.js",
+  "scripts": {
+    "build": "npm run lint && npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/promiseo.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/promiseo.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/promiseo.min.js",
+    "build:copy": "npm run build && bash build/copy.sh",
+    "test": "jest --env=jsdom",
+    "lint": "eslint --ext js --ext vue src",
+    "prepublish": "npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yariksav/promiseo.git"
+  },
+  "keywords": [
+    "async",
+    "promise",
+    "object",
+    "resolve"
+  ],
+  "author": "Yaroslav Savaryn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yariksav/promiseo/issues"
+  },
+  "homepage": "https://github.com/yariksav/promiseo#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.2.1",
+    "eslint-config-standard": "^14.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "rollup": "^1.20.1",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-terser": "^5.1.1"
+  },
+  "eslintIgnore": [
+    "dist",
+    "node_modules/"
+  ]
+}
