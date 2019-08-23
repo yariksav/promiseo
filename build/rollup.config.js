@@ -1,5 +1,4 @@
 import buble from 'rollup-plugin-buble'
-import uglify from 'rollup-plugin-uglify-es'
 import minimist from 'minimist'
 import { terser } from 'rollup-plugin-terser'
 
