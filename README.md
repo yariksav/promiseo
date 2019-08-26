@@ -1,7 +1,6 @@
 ## promiseo
 
-> Async data loading plugin for Vue.js
-
+Library for resolve object with promises
 
 <p align="center">
   <a href="https://npmcharts.com/compare/promiseo?minimal=true">
