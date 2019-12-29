@@ -11,7 +11,7 @@ const generateAsyncFn = (data, timeout) => {
 
 describe('promiseo', () => {
   it('Should work with simple types', async () => {
-    let res = await promiseo('string')
+    const res = await promiseo('string')
     expect(res).toEqual('string')
   })
 
@@ -36,7 +36,7 @@ describe('promiseo', () => {
     })
     expect(fn1).toHaveBeenCalledTimes(1)
     expect(fn2).toHaveBeenCalledTimes(1)
-    expect(res).toEqual({ foo: 'bar', arr: [ 'test' ], simpleString: 'foo', simpleObject: { test: 1 } })
+    expect(res).toEqual({ foo: 'bar', arr: ['test'], simpleString: 'foo', simpleObject: { test: 1 } })
   })
 
   it('should work with object of async functions and object destructuring ', async () => {
@@ -48,7 +48,7 @@ describe('promiseo', () => {
     })
     expect(fn1).toHaveBeenCalledTimes(1)
     expect(fn2).toHaveBeenCalledTimes(1)
-    expect(res).toEqual({ foo: 'bar', baz: 1, arr: [ 'test' ] })
+    expect(res).toEqual({ foo: 'bar', baz: 1, arr: ['test'] })
   })
 
   it('should work with promise which returns object of promises', async () => {
@@ -71,7 +71,7 @@ describe('promiseo', () => {
     expect(res).toEqual({
       simpleString: 'foo',
       simpleObject: { test: 1 },
-      arr: [ 'test' ],
+      arr: ['test'],
       foo: 'bar'
     })
   })
@@ -140,7 +140,7 @@ describe('promiseo', () => {
       simpleObject: { test: 1 }
     })
     const end = new Date().getTime()
-    expect(end - start).toBeLessThan(15)
+    expect(end - start).toBeLessThan(25)
     expect(res).toEqual({
       param1: 1,
       param2: 'test',
@@ -170,7 +170,7 @@ describe('promiseo', () => {
     expect(res).toEqual({
       simpleString: 'foo',
       simpleObject: { test: 1 },
-      arr: [ 'test' ],
+      arr: ['test'],
       foo: 'bar'
     })
   })

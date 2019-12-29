@@ -84,6 +84,7 @@ function checkObjectForPromises (obj, context) {
       promises.push(something)
     } else {
       if (hasAsync(something)) {
+        data[key] = undefined
         promises.push(checkObjectForPromises.call(self, something, context).then(res => {
           data[key] = res
         }))
