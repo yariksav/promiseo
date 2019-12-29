@@ -1,6 +1,6 @@
 {
   "name": "promiseo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Library for resolve object of promises",
   "main": "dist/promiseo.min.js",
   "scripts": {
