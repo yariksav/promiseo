@@ -13,7 +13,7 @@ const isFunction = fn => typeof fn === 'function'
 const isNil = s => s === null || s === undefined
 
 const isPromise = promise => {
-  return promise && (promise instanceof Promise || typeof promise.then === 'function')
+  return promise && (promise instanceof Promise || isFunction(promise.then))
 }
 
 function promiseo (fn, context) {
@@ -34,7 +34,7 @@ function promiseo (fn, context) {
 
   const self = this
   return promise.then(data => {
-    return checkObjectForPromises.call(self, data)
+    return checkObjectForPromises.call(self, data, context)
   })
 }
 
@@ -43,14 +43,14 @@ function hasAsync (obj) {
     return false
   }
   for (const key in obj) {
-    if (isPromise(obj[key]) || isFunction(obj[key])) {
+    if (isPromise(obj[key])) {
       return true
     }
   }
   return false
 }
 
-function checkObjectForPromises (obj, context) {
+function checkObjectForPromises (obj, context = {}) {
   const promises = []
   const self = this
   const data = {}
@@ -83,8 +83,8 @@ function checkObjectForPromises (obj, context) {
       }
       promises.push(something)
     } else {
-      if (hasAsync(something)) {
-        data[key] = undefined
+      if (context.deep && hasAsync(something)) {
+        data[key] = null
         promises.push(checkObjectForPromises.call(self, something, context).then(res => {
           data[key] = res
         }))
