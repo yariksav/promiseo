@@ -43,7 +43,7 @@ function hasAsync (obj) {
     return false
   }
   for (const key in obj) {
-    if (isPromise(obj[key])) {
+    if (isPromise(obj[key]) || isFunction(obj[key])) {
       return true
     }
   }
